@@ -17,9 +17,9 @@ public class UserData {
   private String name;
   private String status;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn
-  private Platforms platforms;
+  private Platform platforms;
 
   @Override
   public String toString() {

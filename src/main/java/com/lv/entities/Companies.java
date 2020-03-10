@@ -30,7 +30,7 @@ public class Companies {
     private String status;
 
     @OneToOne
-    private Platforms platform;
+    private Platform platform;
 
     @Override
     public String toString() {
