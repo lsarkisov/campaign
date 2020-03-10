@@ -20,7 +20,10 @@ public class Creatives {
 	private String header2;
 	private String header1;
 
-	@OneToOne(mappedBy = "creatives")
+	@OneToOne
+	private Creatives creativesId;
+
+	@OneToOne(mappedBy = "facebookId")
 	private Facebook facebook;
 
 	@OneToOne(mappedBy = "creatives")
@@ -28,17 +31,4 @@ public class Creatives {
 
 	@OneToOne(mappedBy = "creatives")
 	private Instagram instagram;
-
-	@Override
- 	public String toString(){
-		return 
-			"Creatives{" + 
-			"image = '" + image + '\'' + 
-			",header = '" + header + '\'' + 
-			",description = '" + description + '\'' + 
-			",url = '" + url + '\'' + 
-			",header_2 = '" + header2 + '\'' + 
-			",header_1 = '" + header1 + '\'' + 
-			"}";
-		}
 }

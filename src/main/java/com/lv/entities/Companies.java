@@ -1,5 +1,6 @@
 package com.lv.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,21 +31,5 @@ public class Companies {
     private String status;
 
     @OneToOne
-    private Platform platform;
-
-    @Override
-    public String toString() {
-        return "Companies{" +
-                "id=" + id +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", targetAudiance=" + targetAudiance +
-                ", insights=" + insights +
-                ", creatives=" + creatives +
-                ", totalBudget=" + totalBudget +
-                ", remainingBudget=" + remainingBudget +
-                ", status='" + status + '\'' +
-                ", platform=" + platform +
-                '}';
-    }
+    private Platforms platforms;
 }

@@ -22,25 +22,16 @@ public class TargetAudiance {
 	private ArrayList<String> interests;
 	private ArrayList<String> keyWords;
 
-	@OneToOne(mappedBy = "targetAudiance")
-	private Facebook facebook;
+	@OneToOne
+	private TargetAudiance targetId;
+
+	@OneToOne
+	@JoinColumn(name = "fb_target_id")
+	private Facebook facebookId;
 
 	@OneToOne(mappedBy = "targetAudiance")
 	private Google google;
 
 	@OneToOne(mappedBy = "targetAudiance")
 	private Instagram instagram;
-
-	@Override
- 	public String toString(){
-		return
-			"TargetAudiance{" +
-			"age_range = '" + ageRange + '\'' +
-			",languages = '" + languages + '\'' +
-			",genders = '" + genders + '\'' +
-			",locations = '" + locations + '\'' +
-			",interests = '" + interests + '\'' +
-			",keyWords = '" + keyWords + '\'' +
-			"}";
-		}
 }

@@ -22,7 +22,10 @@ public class Insights {
 	private double advancedKpi2;
 	private double nanosScore;
 
-	@OneToOne(mappedBy = "insights")
+	@OneToOne
+	private Insights insightId;
+
+	@OneToOne(mappedBy = "facebookId")
 	private Facebook facebook;
 
 	@OneToOne(mappedBy = "insights")
@@ -30,19 +33,4 @@ public class Insights {
 
 	@OneToOne(mappedBy = "insights")
 	private Instagram instagram;
-
-	@Override
- 	public String toString(){
-		return 
-			"Insights{" + 
-			"click_through_rate = '" + clickThroughRate + '\'' + 
-			",website_visits = '" + websiteVisits + '\'' + 
-			",cost_per_click = '" + costPerClick + '\'' + 
-			",advanced_kpi_1 = '" + advancedKpi1 + '\'' + 
-			",clicks = '" + clicks + '\'' + 
-			",impressions = '" + impressions + '\'' + 
-			",advanced_kpi_2 = '" + advancedKpi2 + '\'' + 
-			",nanos_score = '" + nanosScore + '\'' + 
-			"}";
-		}
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
@@ -17,31 +18,10 @@ public class UserData {
   private String name;
   private String status;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(
+          targetEntity = Platforms.class,
+          cascade = CascadeType.ALL)
   @JoinColumn
-  private Platform platforms;
+  private Platforms platforms;
 
-  @Override
-  public String toString() {
-    return "UserData{"
-        + "goal = '"
-        + goal
-        + '\''
-        + ",total_budget = '"
-        + totalBudget
-        + '\''
-        + ",name = '"
-        + name
-        + '\''
-        + ",id = '"
-        + id
-        + '\''
-        + ",status = '"
-        + status
-        + '\''
-        + ",platforms = '"
-        + platforms
-        + '\''
-        + "}";
-  }
 }
