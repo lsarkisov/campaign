@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
@@ -16,10 +17,17 @@ public class Creatives {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column(name = "url", nullable = false)
 	private String url;
+
+	@Column(name = "image", nullable = false)
 	private String image;
+
+	@Size(min = 2, max = 300)
+	@Column(name = "description", nullable = false)
 	private String description;
 
+	@Column(name = "header")
 	private String header;
 
 	@Column(name = "header_1")
