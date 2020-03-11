@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.lv.config.Api.API_URL;
+import static com.lv.api.Base.API_URL;
 
 @CrossOrigin
 @RestController

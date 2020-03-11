@@ -23,7 +23,7 @@ public class Creatives {
 	@Column(name = "image", nullable = false)
 	private String image;
 
-	@Size(min = 2, max = 300)
+	@Size(min = 10, max = 500)
 	@Column(name = "description", nullable = false)
 	private String description;
 

@@ -1,5 +1,5 @@
-package com.lv.config;
+package com.lv.api;
 
-public class Api {
+public class Base {
     public static final String API_URL = "/api/v1";
 }
