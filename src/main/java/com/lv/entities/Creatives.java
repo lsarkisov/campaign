@@ -16,15 +16,20 @@ public class Creatives {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String image;
-	private String header;
-	private String description;
 	private String url;
-	private String header2;
-	private String header1;
+	private String image;
+	private String description;
+
+	private String header;
+
+	@Column(name = "header_1")
+	private String header_1;
+
+	@Column(name = "header_2")
+	private String header_2;
 
 	@OneToMany
-	@JoinColumn(name = "creatives_id")
 	@JsonIgnore
+	@JoinColumn(name = "creatives_id")
 	private List<Creatives> platformId;
 }

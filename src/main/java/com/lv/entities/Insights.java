@@ -15,14 +15,15 @@ public class Insights {
 	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private double clickThroughRate;
+
+	private Long clicks;
+	private Long impressions;
+	private double nanosScore;
 	private Long websiteVisits;
 	private double costPerClick;
 	private double advancedKpi1;
-	private Long clicks;
-	private Long impressions;
 	private double advancedKpi2;
-	private double nanosScore;
+	private double clickThroughRate;
 
 	@OneToMany
 	@JoinColumn(name = "insights_id")

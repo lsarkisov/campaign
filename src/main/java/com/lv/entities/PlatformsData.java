@@ -9,12 +9,12 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @Entity
-public class UserData {
+public class PlatformsData {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String goal;
-  private int totalBudget;
+  private Long totalBudget;
   private String name;
   private String status;
 
