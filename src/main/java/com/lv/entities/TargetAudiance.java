@@ -1,10 +1,13 @@
 package com.lv.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -12,6 +15,7 @@ import java.util.ArrayList;
 public class TargetAudiance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonIgnore
 	private Long id;
 
 	@Basic
@@ -20,18 +24,10 @@ public class TargetAudiance {
 	private ArrayList<String> genders;
 	private ArrayList<String> locations;
 	private ArrayList<String> interests;
-	private ArrayList<String> keyWords;
+	private ArrayList<String> KeyWords;
 
-	@OneToOne
-	private TargetAudiance targetId;
-
-	@OneToOne
+	@OneToMany
 	@JoinColumn(name = "fb_target_id")
-	private Facebook facebookId;
-
-	@OneToOne(mappedBy = "targetAudiance")
-	private Google google;
-
-	@OneToOne(mappedBy = "targetAudiance")
-	private Instagram instagram;
+	@JsonIgnore
+	private List<TargetAudiance> facebookId;
 }

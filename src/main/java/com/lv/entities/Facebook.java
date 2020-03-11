@@ -16,6 +16,7 @@ import java.util.Date;
 public class Facebook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonIgnore
     private Long id;
 
 	@NotNull
@@ -28,23 +29,20 @@ public class Facebook {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDate;
 
-	@OneToOne(
+	@ManyToOne(
 			targetEntity = TargetAudiance.class,
-			mappedBy = "targetId",
 			cascade = CascadeType.ALL)
 	@JoinColumn
 	private TargetAudiance targetAudiance;
 
-	@OneToOne(
+	@ManyToOne(
 			targetEntity = Insights.class,
-			mappedBy = "insightId",
 			cascade = CascadeType.ALL)
 	@JoinColumn
 	private Insights insights;
 
-	@OneToOne(
+	@ManyToOne(
 			targetEntity = Creatives.class,
-			mappedBy = "creativesId",
 			cascade = CascadeType.ALL)
 	@JoinColumn
 	private Creatives creatives;

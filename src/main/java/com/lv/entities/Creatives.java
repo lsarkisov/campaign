@@ -1,9 +1,11 @@
 package com.lv.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,15 +22,8 @@ public class Creatives {
 	private String header2;
 	private String header1;
 
-	@OneToOne
-	private Creatives creativesId;
-
-	@OneToOne(mappedBy = "facebookId")
-	private Facebook facebook;
-
-	@OneToOne(mappedBy = "creatives")
-	private Google google;
-
-	@OneToOne(mappedBy = "creatives")
-	private Instagram instagram;
+	@OneToMany
+	@JoinColumn(name = "creatives_id")
+	@JsonIgnore
+	private List<Creatives> facebookId;
 }
