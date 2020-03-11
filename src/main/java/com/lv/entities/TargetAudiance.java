@@ -18,7 +18,6 @@ public class TargetAudiance {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Basic
 	private ArrayList<Integer> ageRange;
 	private ArrayList<String> languages;
 	private ArrayList<String> genders;
