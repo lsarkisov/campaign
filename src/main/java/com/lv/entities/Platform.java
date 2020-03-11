@@ -11,10 +11,10 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-public class Platforms {
+public class Platform {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonIgnore
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@ManyToOne(
@@ -23,21 +23,19 @@ public class Platforms {
 	@JoinColumn
 	private Facebook facebook;
 
-	@OneToOne(
+	@ManyToOne(
 			targetEntity = Google.class,
-			mappedBy = "googleId",
 			cascade = CascadeType.ALL)
 	@JoinColumn
 	private Google google;
 
-	@OneToOne(
+	@ManyToOne(
 			targetEntity = Instagram.class,
-			mappedBy = "instagramId",
 			cascade = CascadeType.ALL)
 	@JoinColumn
 	private Instagram instagram;
 
 	@OneToMany
 	@JsonIgnore
-	private List<Platforms> userData;
+	private List<Platform> userData;
 }

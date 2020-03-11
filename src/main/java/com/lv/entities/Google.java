@@ -1,39 +1,60 @@
 package com.lv.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @Entity
 public class Google {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    private long startDate;
+    @NotNull
+    @Column(name = "start_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    private Long endDate;
+    @NotNull
+    @Column(name = "end_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(
+            targetEntity = TargetAudiance.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn
     private TargetAudiance targetAudiance;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(
+            targetEntity = Insights.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn
     private Insights insights;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(
+            targetEntity = Creatives.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn
     private Creatives creatives;
 
+    @Column(name = "total_budget")
     private Long totalBudget;
+
+    @Column(name = "remaining_budget")
     private Long remainingBudget;
+
     private String status;
 
     @OneToOne
-    @JoinColumn(name = "google_id")
-    private Platforms googleId;
+    @JsonIgnore
+    private Platform platformId;
 }

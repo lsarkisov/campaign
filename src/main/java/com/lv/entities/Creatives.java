@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 public class Creatives {
 	@Id
+	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
@@ -25,5 +26,5 @@ public class Creatives {
 	@OneToMany
 	@JoinColumn(name = "creatives_id")
 	@JsonIgnore
-	private List<Creatives> facebookId;
+	private List<Creatives> platformId;
 }

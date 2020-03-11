@@ -11,8 +11,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Insights {
-
 	@Id
+	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private double clickThroughRate;
@@ -27,5 +27,5 @@ public class Insights {
 	@OneToMany
 	@JoinColumn(name = "insights_id")
 	@JsonIgnore
-	private List<Insights> facebookId;
+	private List<Insights> platformId;
 }

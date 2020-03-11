@@ -14,8 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 public class TargetAudiance {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonIgnore
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Basic
@@ -27,7 +27,7 @@ public class TargetAudiance {
 	private ArrayList<String> KeyWords;
 
 	@OneToMany
-	@JoinColumn(name = "fb_target_id")
 	@JsonIgnore
-	private List<TargetAudiance> facebookId;
+	@JoinColumn(name = "target_id")
+	private List<TargetAudiance> platformId;
 }

@@ -1,5 +1,6 @@
 package com.lv.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 public class Instagram {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -35,5 +37,5 @@ public class Instagram {
 
     @OneToOne
     @JoinColumn(name = "instagram_id")
-    private Platforms instagramId;
+    private Platform platformId;
 }

@@ -15,8 +15,8 @@ import java.util.Date;
 @Entity
 public class Facebook {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonIgnore
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 	@NotNull
@@ -57,5 +57,5 @@ public class Facebook {
 
     @OneToOne
 	@JsonIgnore
-    private Platforms facebookId;
+    private Platform platformId;
 }
