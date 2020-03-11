@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -16,11 +18,15 @@ public class Facebook {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-	private LocalDateTime endDate;
+	@NotNull
+	@Column(name = "start_date", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startDate;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-	private LocalDateTime startDate;
+	@NotNull
+	@Column(name = "end_date", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endDate;
 
 	@OneToOne(
 			targetEntity = TargetAudiance.class,
@@ -43,8 +49,12 @@ public class Facebook {
 	@JoinColumn
 	private Creatives creatives;
 
+	@Column(name = "total_budget")
 	private Long totalBudget;
+
+	@Column(name = "remaining_budget")
 	private Long remainingBudget;
+
 	private String status;
 
     @OneToOne

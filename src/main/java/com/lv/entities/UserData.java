@@ -14,6 +14,8 @@ public class UserData {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String goal;
+
+  @Column(name = "total_budget")
   private int totalBudget;
   private String name;
   private String status;
